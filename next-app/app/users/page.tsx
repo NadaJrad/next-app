@@ -6,7 +6,9 @@ interface User {
 }
 
 const UsersPage = async () =>  {
-    const res = await fetch('https://jsonplaceholder.typicode.com/users');
+    const res = await fetch('https://jsonplaceholder.typicode.com/users',  
+         {next:{revalidate:10} } ); // cahcing that mean next will reload data each 10s from backend
+ 
     const users: User[]  = await res.json();
   return (
     <>
